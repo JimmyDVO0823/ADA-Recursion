@@ -33,8 +33,68 @@ public final class RecursiveMethods {
     }
 
     public static int MCM(int a, int b) {
+        if (b == 0)
+            return -1;
+        return a*b/MCMReal(a, b);
+    }
+    public static int MCMReal(int a, int b) {
         if (b == 0) return a;
 
-        return MCM(b, a % b);
+        return MCMReal(b, a % b);
+    }
+
+    public static int sumElements(int[] a) {
+        int i = a.length - 1;
+        return sumElements(a,i);
+    }
+
+    private static int sumElements(int[] a, int i) {
+        if(i == 0)
+            return 0;
+
+        return a[i] + sumElements(a,i-1);
+    }
+
+    public static int biggestIndex(int[] a){
+        int i = a.length - 1;
+        return biggestIndex(a,i,0);
+    }
+
+    private static int biggestIndex(int[] a,int i, int biggest){
+        if (i == 0)
+            return biggest;
+        if (a[i] > biggest)
+            biggest = a[i];
+        return biggestIndex(a,i-1,biggest);
+    }
+
+    public static void reverseArray(int[] a){
+        if (a.length == 0){
+            throw new RuntimeException("The vector is empty");
+        }
+        reverseArrayReal(a,0,a.length-1);
+    }
+
+    private static void reverseArrayReal(int[] a,int low,int high){
+        if (low == high || low > high)
+            return;
+        int tmp = a[low];
+        a[low] = a[high];
+        a[high] = tmp;
+        reverseArrayReal(a,low+1,high-1);
+
+    }
+
+    public static int indexEqualsValue(int[] a){
+        int i = a.length - 1;
+        return indexEqualsValueReal(a,i);
+    }
+
+    private static int indexEqualsValueReal(int[] a,int i){
+        if (i == -1)
+            return -1;
+        if (a[i] == i)
+            return i;
+        return indexEqualsValueReal(a,i-1);
     }
 }
