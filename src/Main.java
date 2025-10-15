@@ -8,7 +8,7 @@ public class Main {
         //main2();
         //main3();
         //main4A();
-        //main4B();
+        main4B();
         //main4C();
         //main4D();
         //main4E();
@@ -17,7 +17,8 @@ public class Main {
         //main5A();
         //main5B();
         //main5C();
-        main5D();
+        //main5D(); ESTE ESTA MAL
+        //main5E(); EL 5E NO DI
     }
 
     static void main1() {
@@ -126,5 +127,10 @@ public class Main {
     static void main5D(){
         int [][] a = {{13,22,31},{23,12,46},{15,26,38}};
         System.out.println("El mayor dentro de la matriz es: " + RecursiveMethods.maxMatrix(a));
+    }
+
+    static void main5E(){
+        int[][] a = {{0,2,3},{0,2,3},{0,2,3}};
+        System.out.println(RecursiveMethods.mostZeros(a));
     }
 }
