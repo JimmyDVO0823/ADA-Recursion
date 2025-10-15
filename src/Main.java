@@ -17,6 +17,7 @@ public class Main {
         //main5A();
         //main5B();
         //main5C();
+        main5D();
     }
 
     static void main1() {
@@ -120,5 +121,10 @@ public class Main {
         int[][] b = {{2,2,2},{2,2,2},{2,2,2}};
         System.out.println("El resultado de la suma de matrices es: ");
         System.out.println(Arrays.deepToString(RecursiveMethods.matrixMultiply(a, b)));
+    }
+
+    static void main5D(){
+        int [][] a = {{13,22,31},{23,12,46},{15,26,38}};
+        System.out.println("El mayor dentro de la matriz es: " + RecursiveMethods.maxMatrix(a));
     }
 }

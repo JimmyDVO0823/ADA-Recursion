@@ -288,5 +288,24 @@ public final class RecursiveMethods {
         result[i][j] = a[i][j] * b[i][j];
         return matrixMultiplyReal(a,b,result,i,j + 1);
     }
+
+    public static int maxMatrix(int[][] a){
+        int i = Integer.MIN_VALUE;
+        return maxMatrix(a,i,0,0);
+    }
+
+    private static int maxMatrix(int[][]a, int max, int i, int j){
+        if (j == a[0].length){
+            j = 0;
+            i++;
+        }
+        if (i == a.length){
+            return max;
+        }
+        if (max < a[i][j]){
+            max = a[i][j];
+        }
+        return maxMatrix(a,max,i,j + 1);
+    }
 }
 //< >
