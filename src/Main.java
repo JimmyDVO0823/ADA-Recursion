@@ -1,3 +1,4 @@
+import java.lang.reflect.RecordComponent;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -12,7 +13,10 @@ public class Main {
         //main4D();
         //main4E();
         //main4F();
-        main4G();
+        //main4G();
+        //main5A();
+        //main5B();
+        //main5C();
     }
 
     static void main1() {
@@ -94,5 +98,27 @@ public class Main {
     static void main4G() {
         int[] a = {1,4,67,1,2,4,6,1,3,45,4,2}; //12 elementos
         System.out.println("El mayor es " + RecursiveMethods.biggestElement(a));
+    }
+
+    static void main5A(){
+        int[][] a = {{1,2,3},{1,2,3},{1,2,3}};
+        int[][] b = {{3,2,1},{3,2,1},{3,2,1}};
+        System.out.println("El resultado de la suma de matrices es: ");
+        System.out.println(Arrays.deepToString(RecursiveMethods.matrixSum(a, b)));
+    }
+
+    static void main5B(){
+        int[][] a = {{1,2,3},{1,2,3},{1,2,3}};
+        int[][] b = {{1,2,3},{1,2,3},{1,2,3}};
+        System.out.println("El resultado de la suma de matrices es: ");
+        System.out.println(Arrays.deepToString(RecursiveMethods.matrixSubtract(a, b)));
+
+    }
+
+    static void main5C(){
+        int[][] a = {{1,2,3},{1,2,3},{1,2,3}};
+        int[][] b = {{2,2,2},{2,2,2},{2,2,2}};
+        System.out.println("El resultado de la suma de matrices es: ");
+        System.out.println(Arrays.deepToString(RecursiveMethods.matrixMultiply(a, b)));
     }
 }

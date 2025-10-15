@@ -223,6 +223,7 @@ public final class RecursiveMethods {
             throw new RuntimeException("The vector is empty or null");
         return biggestElementReal(a,0,a[0]);
     }
+
     private static int biggestElementReal(int[] a, int i,int biggest){
         if (i == a.length)
             return biggest;
@@ -230,6 +231,62 @@ public final class RecursiveMethods {
             biggest = a[i];
         return biggestElementReal(a,i + 1,biggest);
 
+    }
+
+    public static int[][] matrixSum(int[][] a, int[][] b){
+        int [][] result = new int[a.length][b[0].length];
+        return matrixSum(a,b,result,0,0);
+    }
+
+    private static int[][] matrixSum(int[][] a, int[][] b, int[][] result, int i, int j){
+        if (j == a[0].length){
+            j = 0;
+            i++;
+        }
+
+        if (i == a.length){
+            return result;
+        }
+
+        result[i][j] = a[i][j] + b[i][j];
+
+        return matrixSum(a,b,result,i,j + 1);
+    }
+
+    public static int[][] matrixSubtract(int[][] a, int[][] b){
+        int [][] result = new int[a.length][b[0].length];
+        return matrixSubtract(a,b,result,0,0);
+    }
+
+    private static int[][] matrixSubtract(int[][] a, int[][] b, int[][] result, int i, int j){
+        if (j == a[0].length){
+            j  = 0;
+            i++;
+        }
+        if (i == a.length){
+            return result;
+        }
+        result[i][j] = a[i][j] - b[i][j];
+        return matrixSubtract(a,b,result,i,j + 1);
+    }
+
+    public static int[][] matrixMultiply(int[][] a, int[][] b){
+        int [][] result = new int[a.length][b[0].length];
+        return  matrixMultiplyReal(a,b,result,0,0);
+    }
+
+    private static int[][] matrixMultiplyReal(int[][] a, int[][] b, int[][] result, int i, int j){
+        if (j == a[0].length){
+            j = 0;
+            i++;
+        }
+
+        if (i == a.length){
+            return result;
+        }
+
+        result[i][j] = a[i][j] * b[i][j];
+        return matrixMultiplyReal(a,b,result,i,j + 1);
     }
 }
 //< >
