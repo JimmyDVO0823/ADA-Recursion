@@ -97,4 +97,139 @@ public final class RecursiveMethods {
             return i;
         return indexEqualsValueReal(a,i-1);
     }
+
+    //Comienzan los metodos del punto 4E
+    public static int[] interseccion(int []a, int[]b){
+        if(a == null || b == null){
+            throw new RuntimeException("Error");
+        }
+        int tamanio = 0;
+        if(a.length < b.length){
+            tamanio = tamanioInt(b, a, 0, 0);
+        } else{
+            tamanio = tamanioInt(a, b, 0, 0);
+        }
+        if(tamanio == 0){
+            return null;
+        }
+        int [] resultado = new int[tamanio];
+        return interseccion(a,b,0,0,resultado);
+    }
+
+    public static int[] interseccion(int []a, int[]b, int i,int j, int resultado[]){
+        if(i == a.length){
+            return resultado;
+        }
+
+        if(contiene2(a[i], b, 0)){
+            resultado[j] = a[i];
+            j++;
+        }
+        return interseccion(a,b,i+1,j,resultado);
+    }
+
+    public static int tamanioInt(int []a, int []b, int i, int tamanio){
+        if(i == a.length){
+            return tamanio;
+        }
+        tamanio += contiene(a[i], b, 0);
+        return tamanioInt(a, b, i + 1, tamanio);
+    }
+
+    public static int contiene(int a, int[]b, int i){
+        if(i == b.length){
+            return 0;
+        }
+        if(b[i] == a){
+            return 1;
+        }
+        return contiene(a, b, i + 1);
+    }
+
+    public static boolean contiene2(int a, int []b, int i){
+        if(i == b.length){
+            return false;
+        }
+        if(b[i] == a){
+            return true;
+        }
+        return contiene2(a, b, i+ 1);
+    }
+
+    //Terminan los metodos del punto 4E
+
+    //Empiezan los metodos para 4F
+    public static int[] union(int[] a, int[] b){
+        int length = a.length + b.length;
+        int[] result = new int[length - tamanioIntUnion(a,b,0,0)];
+
+        System.out.println("length vale " + length);
+        unionReal(a,b,result,0,length,0);
+        return result;
+
+    }
+
+    public static void unionReal(int[] a, int[] b, int[] result, int i, int length, int correction){
+
+        System.out.println(i);
+        if (i == length){
+            return;
+        }
+
+        if (i <  a.length){
+            result[i] = a[i];
+        }
+        else {
+            if (!contieneUnion2(b[i-a.length],result,0)){
+                result[i-correction] = b[i-a.length];
+            }else
+                correction++;
+        }
+        unionReal(a,b,result,i + 1,length,correction);
+    }
+
+    public static int tamanioIntUnion(int []a, int []b, int i, int tamanio){
+        if(i == a.length){
+            return tamanio;
+        }
+        tamanio += contieneUnion(a[i], b, 0);
+        return tamanioInt(a, b, i + 1, tamanio);
+    }
+
+    public static int contieneUnion(int a, int[]b, int i){
+        if(i == b.length){
+            return 0;
+        }
+        if(b[i] == a){
+            return 1;
+        }
+        return contieneUnion(a, b, i + 1);
+    }
+
+    public static boolean contieneUnion2(int a, int []b, int i){
+        if(i == b.length){
+            return false;
+        }
+        if(b[i] == a){
+            return true;
+        }
+        return contieneUnion2(a, b, i+ 1);
+    }
+
+    //Terminan los metodos para 4F
+
+    public static int biggestElement(int[] a){
+        if (a == null || a.length == 0)
+            throw new RuntimeException("The vector is empty or null");
+        return biggestElementReal(a,0,a[0]);
+    }
+    private static int biggestElementReal(int[] a, int i,int biggest){
+        if (i == a.length)
+            return biggest;
+        if (a[i] > biggest)
+            biggest = a[i];
+        return biggestElementReal(a,i + 1,biggest);
+
+    }
 }
+//< >
